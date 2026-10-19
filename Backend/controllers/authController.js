@@ -19,9 +19,10 @@ export const login = async (req, res) => {
         const { email, password } = req.body;
         const { user, token } = await authService.login({ email, password });
         res.cookie('token', `bearer ${token}`, {
-            maxAge: 900000, // 15 minutes in milliseconds
             httpOnly: true, // Prevents access via JavaScript (XSS protection)
-            secure: process.env.NODE_ENV === "production"
+            secure: process.env.NODE_ENV === "production",
+            sameSite: 'lax',
+            maxAge: 24 * 60 * 60 * 1000
         });
         res.status(200).send({
             data: { user, token },

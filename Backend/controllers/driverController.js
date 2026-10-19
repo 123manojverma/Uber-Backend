@@ -1,4 +1,4 @@
-import driverService from "../services/driverService.js"
+import * as driverService from "../services/driverService.js"
 
 export const updateLocation=async(req,res)=>{
     try{

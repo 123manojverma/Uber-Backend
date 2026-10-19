@@ -9,3 +9,7 @@ export async function create(userData) {
 export async function findByEmail(email) {
     return User.findOne({email});
 }
+
+export async function updateLocation(driverId,location){
+    return User.findByIdAndUpdate(driverId,{location},{new:true});
+}
