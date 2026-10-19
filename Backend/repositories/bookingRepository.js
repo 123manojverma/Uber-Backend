@@ -6,3 +6,10 @@ export const createBooking=async(bookingData)=>{
     return booking;
 }
 
+export const updateBookingStatus = async (bookingId, driverId, status) => {
+    return Booking.findOneAndUpdate(
+      { _id: bookingId, status: 'pending' },
+      { driver: driverId, status },
+      { new: true }
+    );
+};

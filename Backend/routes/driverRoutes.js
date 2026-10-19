@@ -1,9 +1,10 @@
 import { Router } from "express";
-import { updateLocation } from "../controllers/driverController.js";
+import { updateLocation, confirmBooking } from "../controllers/driverController.js";
 import { authMiddleware } from "../middlewares/authMiddleware.js";
 
-const driverRouter=Router();
+const driverRouter = Router();
 
-driverRouter.post('/location',authMiddleware,updateLocation)
+driverRouter.post('/location', authMiddleware, updateLocation)
+driverRouter.post('/confirm', authMiddleware, confirmBooking);
 
 export default driverRouter;
